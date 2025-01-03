@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | News homepage</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+--Softorange: hsl(35, 77%, 62%);
+--Softred: hsl(5, 85%, 63%);
+--Off-white: rgb(255, 253, 250);
+--Grayishblue: hsl(233, 8%, 79%);
+--Darkgrayishblue: hsl(236, 13%, 42%);
+--Verydarkblue: hsl(240, 100%, 5%);
+
+}
+@font-face {
+  font-family: Inter;
+  src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+body{
+  font-family: Inter;
+background-color: var(--Off-white);
+}
+.container{
+  width:80%;
+  margin: auto;
+}
+nav{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:30px;
+  margin-top:30px;
+  position:relative;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  transition: 0.4s;
+}
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+nav ul li a:hover {
+  cursor: pointer;
+    color: var(--Softorange);
+  }
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: white;
+    padding-top: 100px;
+    gap: 15px;
+    /* padding-left: 20px; */
+  }
+  nav ul li {
+    display: block;
+    padding: 10px 10px 10px 20px;
+  }
+  nav ul li a {
+    color: var(--Verydarkblue);
+    text-decoration: none;
+  }
+
+}
+#toggleMenu {
+  display: none;
+}
+@media (max-width: 768px) {
+  #toggleMenu {
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    background: none;
+    border: none;
+    outline: none;
+  }
+}
+nav ul.show {
+  display: flex;
+  width:70%;
+
+}
+.row{
+  display:flex;
+
+}
+.row:first-of-type{
+  gap:30px;
+}
+.col-9{
+  width:70%;
+}
+.col-9 .image{
+  width:100%;
+
+}
+.col-9 .image img{
+  width:100%;
+}
+.col-3{
+  width:30%;
+  background-color: var(--Verydarkblue);
+  padding:30px 20px;
+  color:white;
+}
+.main{
+  padding:30px;
+}
+.col{
+  width:50%;
+  padding-top: 20px;
+}
+.col h1{
+  font-size: 52px;
+  padding-right: 60px;
+  font-weight: 800;
+  line-height: 54px;
+}
+.col p{
+  line-height: 24px;
+  font-size: 18px;
+}
+.col button{
+  margin-top: 30px;
+  background-color: var(--Softred);
+  border:none;
+  outline:none;
+  padding:10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.col-3 h1{
+  color: var(--Softorange);
+}
+.col-3 .new-article{
+  padding:30px 0;
+  border-bottom:0.5px solid var(--Darkgrayishblue)
+}
+.col-3 .new-article:last-of-type{
+  padding:30px 0 0 0;
+  border-bottom:none;
+}
+.col-3 .new-article h3{
+color: var(--Off-white);
+margin-bottom: 10px;
+}
+.col-3 .new-article p{
+color: var(--Grayishblue);
+line-height: 22px;
+font-size: 14px;
+}
+.col-md-3{
+  display:flex;
+  /* width:335px; */
+  gap:20px;
+}
+.col-md-3 .img{
+  width:150px;
+}
+.col-md-3 .img img{
+  width:100%;
+  height: 100%;
+}
+.col-md-3 h1{
+  color: var(--Softred);
+}
+.col-md-3 h2{
+font-size: 18px;
+font-weight: 800;
+margin-top: 5px;
+margin-bottom: 10px;
+}
+
+.col-md-3 p{
+  line-height: 22px;
+}
+.row-2{
+  width:80%;margin:auto;padding:30px;justify-content: space-between;
+}
+@media only screen and (max-width:600px){
+  .row{
+    flex-direction: column;
+  }
+  .container{
+    width:100%;
+   
+  }
+  .col-9,.col-3{
+    width:100%;
+  }
+  .col{
+    width:100%;
+  }
+  .col h1{
+    padding:0;
+  }
+  nav{
+    padding:0px 15px;
+  }
+  .main{
+    padding:30px 15px;
+  }
+  .col p{
+    line-height: 27px;
+  }
+  .row-2{
+    width:100%;
+    padding:30px 15px;
+  }
+  .col-md-3{
+    width:unset;
+    margin-bottom: 35px;
+  }
+  .col-md-3:last-of-type{
+
+    margin-bottom:0;
+  }
+}
+
+button:hover{
+  color: white;
+  background-color:var(--Verydarkblue);
+  cursor: pointer;
+}
+.col-3 h3:hover{
+  color: var(--Softorange);  cursor: pointer;
+}
+.content h2:hover{
+  color: var(--Softred); cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+
+  
+  <nav>
+    <img src="./assets/images/logo.svg" alt="">
+    <ul>
+      <li><a>Home</a></li>
+      <li><a>New</a></li>
+      <li><a>Popular</a></li>
+      <li><a>Trending</a></li>
+      <li><a>Categories</a></li>
+     
+    </ul>
+  </nav>
+  <button id="toggleMenu"><img src="./assets/images/icon-menu.svg" alt=""></button>
+
+  <div class="row main">
+    <div class="col-9">
+      <div class="image">
+        <img src="./assets/images/image-web-3-desktop.jpg"  alt="">
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1>The Bright Future of Web 3.0?</h1>
+      </div>
+      <div class="col">
+        <p>  We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+          But is it really fulfilling its promise?
+        </p>
+        <button>Read more</button>
+      </div>
+    </div>
+    </div>
+    <div class="col-3">
+      <h1> New</h1>
+      <div class="new-article">
+        <h3> Hydrogen VS Electric Cars</h3>
+        <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+      </div>
+      <div class="new-article">
+        <h3>  The Downsides of AI Artistry</h3>
+        <p> What are the possible adverse effects of on-demand AI image generation?</p>
+      </div>
+      <div class="new-article">
+        <h3>Is VC Funding Drying Up?</h3>
+        <p>  Private funding by VC firms is down 50% YOY. We take a look at what that means.
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+<div class="row row-2" >
+  
+  <div class="col-md-3">
+    <div class="img">
+      <img src="./assets/images/image-retro-pcs.jpg" alt="">
+    </div>
+    <div class="content">
+<h1>01</h1>
+<h2> Reviving Retro PCs</h2>
+<p>  What happens when old PCs are given modern upgrades?
+</p>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="img">
+      <img src="./assets/images/image-top-laptops.jpg" alt="">
+    </div>
+    <div class="content">
+<h1>02</h1>
+<h2>Top 10 Laptops of 2022</h2>
+<p> Our best picks for various needs and budgets.</p>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="img">
+      <img src="./assets/images/image-gaming-growth.jpg" alt="">
+    </div>
+    <div class="content">
+<h1> 03</h1>
+<h2> The Growth of Gaming</h2>
+<p> How the pandemic has sparked fresh opportunities.
+</p>
+    </div>
+  </div>
+</div>
+
+
+
+ 
+
+  
+  
+  
+
+ 
+  
+  
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+  <script>
+    document.getElementById('toggleMenu').addEventListener('click', function() {
+
+      if($("nav ul").hasClass("show")){
+        $("#toggleMenu img").attr("src","./assets/images/icon-menu.svg");
+        document.body.style.backgroundColor = "white";
+      }else{
+        $("#toggleMenu img").attr("src","./assets/images/icon-menu-close.svg");
+        document.body.style.backgroundColor = "rgb(197, 198, 206,0.4)";
+      }
+      document.querySelector('nav ul').classList.toggle('show');
+      
+     
+    });
+    changeImg();
+    $(window).resize(function(){
+      changeImg();
+    
+    })
+function changeImg(){
+  if(screen.width<600){
+      $(".col-9 img").attr("src","./assets/images/image-web-3-mobile.jpg");
+      }else{
+        $(".col-9 img").attr("src","./assets/images/image-web-3-desktop.jpg");
+
+      }
+}
+
+    </script>
+</body>
+</html>
